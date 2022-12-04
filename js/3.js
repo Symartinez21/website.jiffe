@@ -193,7 +193,7 @@ function init() {
 
 var skyGeo = new THREE.SphereGeometry(100000, 25, 25);
 
-var loader = new THREE.TextureLoader(),
+const loader = new THREE.TextureLoader(), new GLTFLoader();
     texture = loader.load( "./assets/images/skydome.jpg" );
 
 var material = new THREE.MeshPhongMaterial({
@@ -205,7 +205,7 @@ var sky = new THREE.Mesh(skyGeo, material);
 
   var mesh;
 
-  const loader = new GLTFLoader();
+//const loader = new GLTFLoader();
 
   loader.load( './assets/Jiffe.glb',
    function ( gltf ) {
