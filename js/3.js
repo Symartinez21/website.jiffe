@@ -185,7 +185,7 @@ function init() {
   let floorGeometry = new THREE.PlaneGeometry(2000, 2000, 100, 100);
   floorGeometry.rotateX(-Math.PI / 2);
 
-  const floorMaterial = new THREE.MeshBasicMaterial({color: 0x4281f5});
+  // const floorMaterial = new THREE.MeshBasicMaterial({color: 0x4281f5});
   const floor = new THREE.Mesh(floorGeometry, floorMaterial);
 
   // Insert completed floor into the scene
@@ -195,7 +195,7 @@ var skyGeo = new THREE.SphereGeometry(100000, 25, 25);
 
 var loader = new THREE.TextureLoader(),
     texture = loader.load( "./assets/images/skydome.jpg" );
-    
+
 var material = new THREE.MeshPhongMaterial({
     map: texture,
        });
