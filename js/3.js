@@ -185,16 +185,16 @@ function init() {
   let floorGeometry = new THREE.PlaneGeometry(2000, 2000, 100, 100);
   floorGeometry.rotateX(-Math.PI / 2);
 
-  // const floorMaterial = new THREE.MeshBasicMaterial({color: 0x4281f5});
-  const floor = new THREE.Mesh(floorGeometry, floorMaterial);
+  const floorMaterial = new THREE.MeshBasicMaterial({color: 0x4281f5});
+ const floor = new THREE.Mesh(floorGeometry, floorMaterial);
 
   // Insert completed floor into the scene
-  scene.add(floor);
+scene.add(floor);
 
 var skyGeo = new THREE.SphereGeometry(100000, 25, 25);
 
-const loader = new THREE.TextureLoader(), new GLTFLoader();
-    texture = loader.load( "./assets/images/skydome.jpg" );
+loader = new THREE.TextureLoader(),
+texture = loader.load( "./assets/images/skydome.jpg" ) ();
 
 var material = new THREE.MeshPhongMaterial({
     map: texture,
@@ -292,17 +292,17 @@ function animate() {
     velocity.x -= velocity.x * 10.0 * delta;
     velocity.z -= velocity.z * 10.0 * delta;
 
-    if (!flyMode) {
-      // Turn on gravity
-      velocity.y -= 9.8 * 100.0 * delta; // 100.0 = mass
-    }
-
-    direction.z = Number(moveForward) - Number(moveBackward);
-    direction.x = Number(moveRight) - Number(moveLeft);
-    direction.normalize(); // this ensures consistent movements in all directions
-
-    if (moveForward || moveBackward) velocity.z -= direction.z * 400.0 * delta;
-    if (moveLeft || moveRight) velocity.x -= direction.x * 400.0 * delta;
+    // if (!flyMode) {
+    //   // Turn on gravity
+    //   velocity.y -= 9.8 * 100.0 * delta; // 100.0 = mass
+    // }
+    //
+    // direction.z = Number(moveForward) - Number(moveBackward);
+    // direction.x = Number(moveRight) - Number(moveLeft);
+    // direction.normalize(); // this ensures consistent movements in all directions
+    //
+    // if (moveForward || moveBackward) velocity.z -= direction.z * 400.0 * delta;
+    // if (moveLeft || moveRight) velocity.x -= direction.x * 400.0 * delta;
 
     if (onObject) {
       velocity.y = Math.max(0, velocity.y);
