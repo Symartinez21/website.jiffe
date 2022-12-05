@@ -84,10 +84,6 @@ function init() {
   // Add controls to scene
   scene.add(controls.getObject());
 
-  console.log('If you found this text you\'re a nerd *<:o(')
-  const makeFunOfArrowKeys = function() {
-    console.log('I can\'t believe you used the arrow keys you noob');
-  };
 
   // Define key controls for WASD controls
   const onKeyDown = function(event) {
@@ -187,27 +183,50 @@ function init() {
 
   const floorMaterial = new THREE.MeshBasicMaterial({color: 0x4281f5});
  const floor = new THREE.Mesh(floorGeometry, floorMaterial);
-
   // Insert completed floor into the scene
 scene.add(floor);
 
-var skyGeo = new THREE.SphereGeometry(100000, 25, 25);
+//add skydome
+// var skyGeo = new THREE.SphereGeometry(100000, 25, 25);
+//
+// let loader = new THREE.TextureLoader(),
+// texture = loader.load( "./assets/images/skydome.jpg" ) ();
+//
+// var material = new THREE.MeshPhongMaterial({
+//     map: texture,
+//        });
+// var sky = new THREE.Mesh(skyGeo, material);
+//     sky.material.side = THREE.BackSide;
+// scene.add(sky);
 
-let loader = new THREE.TextureLoader(),
-texture = loader.load( "./assets/images/skydome.jpg" ) ();
+//first image
+//load image as texture
+const texture = new THREE.TextureLoader().load('./Giraffe_model.jpg');
+const material = new THREE.MeshBasicMaterial ( {map: texture, side: THREE.DoubleSide});
+const geometry = new THREE.PlaneGeometry (25, 25);
+const plane = new THREE.Mesh (geometry, material);
+plane.position.set(0, 20, -20);
+scene.add(plane);
 
-var material = new THREE.MeshPhongMaterial({
-    map: texture,
-       });
-var sky = new THREE.Mesh(skyGeo, material);
-    sky.material.side = THREE.BackSide;
-    scene.add(sky);
+// // Second Image (Text with image and white background)
+// // Load image as texture
+// const texture2 = new THREE.TextureLoader().load( '../../assets/bouy.jpg' );
+// // immediately use the texture for material creation
+// const material2 = new THREE.MeshBasicMaterial( { map: texture2, side: THREE.DoubleSide } );
+// // Create plane geometry
+// const geometry2 = new THREE.PlaneGeometry( 200, 100 );
+// // Apply image texture to plane geometry
+// const plane2 = new THREE.Mesh( geometry2, material2 );
+// // Position plane geometry
+// plane2.position.set(0 , 100 , -200);
+// // Place plane geometry
+// scene.add( plane2 );
 
   var mesh;
 
-//const loader = new GLTFLoader();
+const loader = new GLTFLoader();
 
-  loader.load( './assets/Jiffe.glb',
+  loader.load( '../assets/3D_Models/Jiffe.glb',
    function ( gltf ) {
 
      gltf.scene.traverse(function(child) {
