@@ -193,7 +193,7 @@ scene.add(floor);
 
 var skyGeo = new THREE.SphereGeometry(100000, 25, 25);
 
-loader = new THREE.TextureLoader(),
+let loader = new THREE.TextureLoader(),
 texture = loader.load( "./assets/images/skydome.jpg" ) ();
 
 var material = new THREE.MeshPhongMaterial({
