@@ -226,7 +226,7 @@ scene.add(plane);
 
 const loader = new GLTFLoader();
 
-  loader.load( '../assets/3D_Models/Jiffe.glb',
+  loader.load( '../assets/3DModels/Jiffe.glb',
    function ( gltf ) {
 
      gltf.scene.traverse(function(child) {
