@@ -45,8 +45,8 @@ function init() {
   scene.fog = new THREE.Fog(0xffffff, 0, 750);
 
   // Define scene lighting
-  const light = new THREE.HemisphereLight(0x0fff6f, 0x57635f, 0.75);
-  light.position.set(0.5, 1, 0.75);
+  const light = new THREE.HemisphereLight(0x404040, 0x57635f, 0.75);
+  // light.position.set(0.5, 1, 0.75);
   scene.add(light);
 
   // Define controls
@@ -147,7 +147,7 @@ function init() {
   );
 
   // Generate the ground
-  let floorGeometry = new THREE.PlaneGeometry(2000, 2000, 100, 100);
+  let floorGeometry = new THREE.PlaneGeometry(3000, 3000, 100, 100);
   floorGeometry.rotateX(-Math.PI / 2);
 
   const floorMaterial = new THREE.MeshBasicMaterial({color: 0x000000});
@@ -162,7 +162,6 @@ scene.add(floor);
 // const plane = new THREE.Mesh (geometry, material);
 // plane.position.set(0, 20, -20);
 // scene.add(plane);
-
 
   var mesh;
 
@@ -179,7 +178,7 @@ const loader = new GLTFLoader();
      });
      // set position and scale
      mesh = gltf.scene;
-     mesh.position.set(0, 0, 0);
+     mesh.position.set(-40, 0, 0);
      mesh.rotation.set(0, 0, 0);
      mesh.scale.set(1, 1 , 1);
      // Add model to scene
@@ -190,6 +189,7 @@ const loader = new GLTFLoader();
   	console.error( error );
 
   } );
+  
 
   // Define Rendered and html document placement
   renderer = new THREE.WebGLRenderer({ antialias: true });
