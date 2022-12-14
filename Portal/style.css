@@ -21,7 +21,7 @@ h2 {
       text-decoration-thickness: auto;
       font-style: italic;
       text-transform: uppercase;
-      color: #3000b5;
+      color: #f586c5;
       font-size: 50px;
       font-family: 'Press Start 2P', sans-serif;
 }
@@ -48,7 +48,7 @@ p.move-mid {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(to bottom right, rgba(3, 19, 11, 0.138), rgb(0, 202, 47));
+  background-image: linear-gradient(to bottom right, rgba(3, 19, 11, 0.982), rgb(0, 202, 47));
 }
 
 #instructions {
