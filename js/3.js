@@ -108,12 +108,12 @@ function init() {
         moveRight = true;
         break;
 
-      // case "Space":
-      //   if (canJump === true && !flyMode) velocity.y = 350;
-      //   if (flyMode) velocity.y = 150;
-      //   canJump = false;
-      //   break;
-      //
+      case "Space":
+        if (canJump === true && !flyMode) velocity.y = 350;
+        if (flyMode) velocity.y = 150;
+        canJump = false;
+        break;
+
       // case "ShiftLeft":
       //   if (flyMode) velocity.y = -150;
       //   break;
@@ -185,28 +185,14 @@ function init() {
  const floor = new THREE.Mesh(floorGeometry, floorMaterial);
   // Insert completed floor into the scene
 scene.add(floor);
-
-//add skydome
-// var skyGeo = new THREE.SphereGeometry(100000, 25, 25);
-//
-// let loader = new THREE.TextureLoader(),
-// texture = loader.load( "./assets/images/skydome.jpg" ) ();
-//
-// var material = new THREE.MeshPhongMaterial({
-//     map: texture,
-//        });
-// var sky = new THREE.Mesh(skyGeo, material);
-//     sky.material.side = THREE.BackSide;
-// scene.add(sky);
-
 //first image
 //load image as texture
-const texture = new THREE.TextureLoader().load('./Giraffe_model.jpg');
-const material = new THREE.MeshBasicMaterial ( {map: texture, side: THREE.DoubleSide});
-const geometry = new THREE.PlaneGeometry (25, 25);
-const plane = new THREE.Mesh (geometry, material);
-plane.position.set(0, 20, -20);
-scene.add(plane);
+// const texture = new THREE.TextureLoader().load('./Giraffe_model.jpg');
+// const material = new THREE.MeshBasicMaterial ( {map: texture, side: THREE.DoubleSide});
+// const geometry = new THREE.PlaneGeometry (25, 25);
+// const plane = new THREE.Mesh (geometry, material);
+// plane.position.set(0, 20, -20);
+// scene.add(plane);
 
 // // Second Image (Text with image and white background)
 // // Load image as texture
@@ -226,7 +212,7 @@ scene.add(plane);
 
 const loader = new GLTFLoader();
 
-  loader.load( '../assets/3DModels/Jiffe.glb',
+  loader.load( '../assets/3DModels/scene.glb',
    function ( gltf ) {
 
      gltf.scene.traverse(function(child) {
