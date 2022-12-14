@@ -1,9 +1,3 @@
-
-// 3.js
-// A three.js scene which uses basic shapes to generate a scene which can be traversed with basic WASD and mouse controls, this scene is full screen with an overlay.
-
-// Import required source code
-// Import three.js core
 import * as THREE from "./three.module.js";
 
 // Import pointer lock controls
@@ -23,10 +17,6 @@ let moveBackward = false;
 let moveLeft = false;
 let moveRight = false;
 let canJump = false;
-let flyMode = false;
-
-let lastSpacePressTime = 0;
-
 
 let prevTime = performance.now();
 const velocity = new THREE.Vector3();
@@ -42,7 +32,7 @@ animate();
 function init() {
   // Establish the camera
   camera = new THREE.PerspectiveCamera(
-    75,
+    100,
     window.innerWidth / window.innerHeight,
     1,
     1000
@@ -109,8 +99,7 @@ function init() {
         break;
 
       case "Space":
-        if (canJump === true && !flyMode) velocity.y = 350;
-        if (flyMode) velocity.y = 150;
+        if (canJump === true) velocity.y += 350;
         canJump = false;
         break;
 
@@ -124,45 +113,25 @@ function init() {
 
   const onKeyUp = function(event) {
     switch (event.code) {
-      case "ArrowUp": makeFunOfArrowKeys();
+      case "ArrowUp":
       case "KeyW":
         moveForward = false;
         break;
-      case "ArrowLeft": makeFunOfArrowKeys();
+
+      case "ArrowLeft":
       case "KeyA":
         moveLeft = false;
         break;
 
-      case "ArrowDown": makeFunOfArrowKeys();
+      case "ArrowDown":
       case "KeyS":
         moveBackward = false;
         break;
 
-      case "ArrowRight": makeFunOfArrowKeys();
+      case "ArrowRight":
       case "KeyD":
         moveRight = false;
         break;
-
-      // case "Space":
-      //   // if the last time space was pressed wasn't too long ago.
-      //   const timeNow = performance.now();
-      //   const maxTimePassed = 500;  // 500 ms or 1/2 a second
-      //   if (timeNow - lastSpacePressTime < maxTimePassed) {
-      //     console.log('Double press!!!');
-      //     // Toggle flyMode between true and false
-      //     flyMode = !flyMode;
-      //     console.log('flyMode: ' + (flyMode ? 'ON' : 'OFF'));
-      //     velocity.y = 0;
-      //   }
-      //   lastSpacePressTime = timeNow;
-      //
-      //   // Stop flying up (if in flyMode) when space is released
-      //   if (flyMode) velocity.y = 0;
-      //   break;
-      //
-      // case "ShiftLeft":
-      //   if (flyMode) velocity.y = 0;
-      //   break;
     }
   };
 
@@ -194,19 +163,6 @@ scene.add(floor);
 // plane.position.set(0, 20, -20);
 // scene.add(plane);
 
-// // Second Image (Text with image and white background)
-// // Load image as texture
-// const texture2 = new THREE.TextureLoader().load( '../../assets/bouy.jpg' );
-// // immediately use the texture for material creation
-// const material2 = new THREE.MeshBasicMaterial( { map: texture2, side: THREE.DoubleSide } );
-// // Create plane geometry
-// const geometry2 = new THREE.PlaneGeometry( 200, 100 );
-// // Apply image texture to plane geometry
-// const plane2 = new THREE.Mesh( geometry2, material2 );
-// // Position plane geometry
-// plane2.position.set(0 , 100 , -200);
-// // Place plane geometry
-// scene.add( plane2 );
 
   var mesh;
 
@@ -234,30 +190,6 @@ const loader = new GLTFLoader();
   	console.error( error );
 
   } );
-  //
-  // const loader2 = new GLTFLoader();
-  // loader.load( './assets/clouds.glb',
-  //   function(gltf) {
-  //     // Scan loaded model for mesh and apply defined material if mesh is present
-  //     gltf.scene.traverse(function(child) {
-  //       if (child.isMesh2) {
-  //         //child.material = newMaterial;
-  //       }
-  //     });
-  //     // set position and scale
-  //     mesh2 = gltf.scene;
-  //     mesh2.position.set(1, 10, 0);
-  //     mesh2.rotation.set(0, 0, 0);
-  //     mesh2.scale.set(10, 10, 10);
-  //     // Add model to scene
-  //     scene.add(mesh2);
-  //   },
-  //   undefined,
-  //   function(error) {
-  //     console.error(error);
-  //   }
-  // );
-  //
 
   // Define Rendered and html document placement
   renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -297,17 +229,16 @@ function animate() {
     velocity.x -= velocity.x * 10.0 * delta;
     velocity.z -= velocity.z * 10.0 * delta;
 
-    // if (!flyMode) {
-    //   // Turn on gravity
-    //   velocity.y -= 9.8 * 100.0 * delta; // 100.0 = mass
-    // }
-    //
-    // direction.z = Number(moveForward) - Number(moveBackward);
-    // direction.x = Number(moveRight) - Number(moveLeft);
-    // direction.normalize(); // this ensures consistent movements in all directions
-    //
-    // if (moveForward || moveBackward) velocity.z -= direction.z * 400.0 * delta;
-    // if (moveLeft || moveRight) velocity.x -= direction.x * 400.0 * delta;
+
+    velocity.y -= 9.8 * 100.0 * delta; // 100.0 = mass
+
+
+    direction.z = Number(moveForward) - Number(moveBackward);
+    direction.x = Number(moveRight) - Number(moveLeft);
+    direction.normalize(); // this ensures consistent movements in all directions
+
+    if (moveForward || moveBackward) velocity.z -= direction.z * 400.0 * delta;
+    if (moveLeft || moveRight) velocity.x -= direction.x * 400.0 * delta;
 
     if (onObject) {
       velocity.y = Math.max(0, velocity.y);
