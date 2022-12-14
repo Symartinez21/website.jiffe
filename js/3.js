@@ -47,7 +47,7 @@ function init() {
     1,
     1000
   );
-  camera.position.y = 50; //this plops me higher
+  camera.position.y = 20; //this plops me higher
 
   // Define basic scene parameters
   scene = new THREE.Scene();
