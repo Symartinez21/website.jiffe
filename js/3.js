@@ -147,7 +147,7 @@ function init() {
   );
 
   // Generate the ground
-  let floorGeometry = new THREE.PlaneGeometry(3000, 3000, 100, 100);
+  let floorGeometry = new THREE.PlaneGeometry(3000, 3000, 50, 100);
   floorGeometry.rotateX(-Math.PI / 2);
 
   const floorMaterial = new THREE.MeshBasicMaterial({color: 0x000000});
@@ -189,7 +189,7 @@ const loader = new GLTFLoader();
   	console.error( error );
 
   } );
-  
+
 
   // Define Rendered and html document placement
   renderer = new THREE.WebGLRenderer({ antialias: true });
