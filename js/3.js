@@ -45,7 +45,7 @@ function init() {
   scene.fog = new THREE.Fog(0xffffff, 0, 750);
 
   // Define scene lighting
-  var light = new THREE.AmbientLight(0x404040, 1);
+  var light = new THREE.AmbientLight(0x404040, 8);
   // light.position.set(0.5, 1, 0.75);
   scene.add(light);
 
