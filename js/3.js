@@ -108,15 +108,15 @@ function init() {
         moveRight = true;
         break;
 
-      case "Space":
-        if (canJump === true && !flyMode) velocity.y = 350;
-        if (flyMode) velocity.y = 150;
-        canJump = false;
-        break;
-
-      case "ShiftLeft":
-        if (flyMode) velocity.y = -150;
-        break;
+      // case "Space":
+      //   if (canJump === true && !flyMode) velocity.y = 350;
+      //   if (flyMode) velocity.y = 150;
+      //   canJump = false;
+      //   break;
+      //
+      // case "ShiftLeft":
+      //   if (flyMode) velocity.y = -150;
+      //   break;
 
     }
   };
@@ -143,26 +143,26 @@ function init() {
         moveRight = false;
         break;
 
-      case "Space":
-        // if the last time space was pressed wasn't too long ago.
-        const timeNow = performance.now();
-        const maxTimePassed = 500;  // 500 ms or 1/2 a second
-        if (timeNow - lastSpacePressTime < maxTimePassed) {
-          console.log('Double press!!!');
-          // Toggle flyMode between true and false
-          flyMode = !flyMode;
-          console.log('flyMode: ' + (flyMode ? 'ON' : 'OFF'));
-          velocity.y = 0;
-        }
-        lastSpacePressTime = timeNow;
-
-        // Stop flying up (if in flyMode) when space is released
-        if (flyMode) velocity.y = 0;
-        break;
-
-      case "ShiftLeft":
-        if (flyMode) velocity.y = 0;
-        break;
+      // case "Space":
+      //   // if the last time space was pressed wasn't too long ago.
+      //   const timeNow = performance.now();
+      //   const maxTimePassed = 500;  // 500 ms or 1/2 a second
+      //   if (timeNow - lastSpacePressTime < maxTimePassed) {
+      //     console.log('Double press!!!');
+      //     // Toggle flyMode between true and false
+      //     flyMode = !flyMode;
+      //     console.log('flyMode: ' + (flyMode ? 'ON' : 'OFF'));
+      //     velocity.y = 0;
+      //   }
+      //   lastSpacePressTime = timeNow;
+      //
+      //   // Stop flying up (if in flyMode) when space is released
+      //   if (flyMode) velocity.y = 0;
+      //   break;
+      //
+      // case "ShiftLeft":
+      //   if (flyMode) velocity.y = 0;
+      //   break;
     }
   };
 
@@ -181,7 +181,7 @@ function init() {
   let floorGeometry = new THREE.PlaneGeometry(2000, 2000, 100, 100);
   floorGeometry.rotateX(-Math.PI / 2);
 
-  const floorMaterial = new THREE.MeshBasicMaterial({color: 0x4281f5});
+  const floorMaterial = new THREE.MeshBasicMaterial({color: 0x000000});
  const floor = new THREE.Mesh(floorGeometry, floorMaterial);
   // Insert completed floor into the scene
 scene.add(floor);
