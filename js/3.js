@@ -45,7 +45,7 @@ function init() {
   scene.fog = new THREE.Fog(0xffffff, 0, 750);
 
   // Define scene lighting
-  const light = new THREE.AmbientLight(0x404040, 0x57635f, 0.75);
+  var light = new THREE.AmbientLight(0x404040, 1);
   // light.position.set(0.5, 1, 0.75);
   scene.add(light);
 
@@ -180,7 +180,7 @@ const loader = new GLTFLoader();
      mesh = gltf.scene;
      mesh.position.set(-40, 0, 0);
      mesh.rotation.set(0, 0, 0);
-     mesh.scale.set(1, 1 , 1);
+     mesh.scale.set(.8, .8 , .8);
      // Add model to scene
      scene.add(mesh);
 
