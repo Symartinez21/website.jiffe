@@ -51,11 +51,11 @@ function init() {
 
   // Define basic scene parameters
   scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x4169E1);
+  scene.background = new THREE.Color(0x000000);
   scene.fog = new THREE.Fog(0xffffff, 0, 750);
 
   // Define scene lighting
-  const light = new THREE.HemisphereLight(0xeeeeff, 0x777788, 0.75);
+  const light = new THREE.HemisphereLight(0x0fff6f, 0x57635f, 0.75);
   light.position.set(0.5, 1, 0.75);
   scene.add(light);
 
